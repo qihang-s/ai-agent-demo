@@ -1,26 +1,196 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-main: #f4f7fb;
+  --fg-main: #18212f;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--bg-main);
+  --color-foreground: var(--fg-main);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--fg-main);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.26), transparent 42%),
+    radial-gradient(circle at 85% 12%, rgba(45, 212, 191, 0.2), transparent 38%),
+    linear-gradient(145deg, #f8fafc 0%, #ecfeff 42%, #eff6ff 100%);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.ambient {
+  position: fixed;
+  z-index: -1;
+  filter: blur(36px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ambient-a {
+  top: 72px;
+  left: -80px;
+  width: 260px;
+  height: 260px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.45), rgba(45, 212, 191, 0));
+}
+
+.ambient-b {
+  right: -110px;
+  bottom: 110px;
+  width: 320px;
+  height: 320px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.4), rgba(14, 165, 233, 0));
+}
+
+.hero-panel {
+  background:
+    linear-gradient(130deg, rgba(15, 23, 42, 0.97), rgba(30, 41, 59, 0.9)),
+    linear-gradient(25deg, rgba(8, 145, 178, 0.35), rgba(15, 23, 42, 0));
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.28);
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  top: -70px;
+  right: -80px;
+  width: 230px;
+  height: 230px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.3), rgba(6, 182, 212, 0));
+}
+
+.tag {
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 9999px;
+  padding: 0.35rem 0.72rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: rgba(226, 232, 240, 0.95);
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.chat-shell {
+  align-items: stretch;
+}
+
+.chat-panel {
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.7));
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.scroll-area {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
+}
+
+.bubble {
+  width: fit-content;
+  max-width: min(84%, 680px);
+  border-radius: 1.1rem;
+  padding: 0.92rem 1rem;
+  animation: fade-up 0.28s ease-out;
+}
+
+.bubble-assistant {
+  background: linear-gradient(180deg, #ffffff, #f9fbff);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+}
+
+.bubble-user {
+  margin-left: auto;
+  color: #f8fafc;
+  background: linear-gradient(140deg, #0f766e, #155e75);
+}
+
+.typing-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0f172a;
+  font-size: 0.85rem;
+}
+
+.typing-dots {
+  display: inline-flex;
+  gap: 0.24rem;
+}
+
+.typing-dots i {
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 9999px;
+  background: #0f766e;
+  opacity: 0.35;
+  animation: blink 1s ease-in-out infinite;
+}
+
+.typing-dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.send-button {
+  background: linear-gradient(140deg, #0f172a, #0f766e);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.22);
+}
+
+.send-button:hover {
+  transform: translateY(-1px);
+}
+
+.side-panel {
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 245, 249, 0.75));
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.quick-item {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(255, 255, 255, 0.8);
+  color: #1f2937;
+  transition: all 0.18s ease;
+}
+
+.quick-item:hover {
+  border-color: rgba(14, 165, 233, 0.55);
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .bubble {
+    max-width: 92%;
+  }
 }
