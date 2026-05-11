@@ -93,16 +93,8 @@ export default function Home() {
       <section className="hero-panel relative mb-6 overflow-hidden rounded-3xl p-6 md:p-8">
         <p className="text-xs uppercase tracking-[0.24em] text-cyan-100/80">Next.js + LangChain Agent</p>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-          可落地的前端智能体模板
+          智能体助手
         </h1>
-        <p className="mt-3 max-w-2xl text-sm text-slate-200 md:text-base">
-          服务端运行 Agent，前端只负责交互。安全、清晰、可扩展，适合快速搭建业务助手。
-        </p>
-        <div className="mt-5 flex flex-wrap gap-2">
-          <span className="tag">工具调用</span>
-          <span className="tag">OpenAI 兼容</span>
-          <span className="tag">Next.js App Router</span>
-        </div>
       </section>
 
       <section className="chat-shell grid flex-1 gap-4 md:grid-cols-[minmax(0,1fr)_260px]">

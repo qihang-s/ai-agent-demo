@@ -80,6 +80,9 @@ body {
 }
 
 .chat-panel {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 220px);
   backdrop-filter: blur(10px);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.7));
   border: 1px solid rgba(148, 163, 184, 0.32);
@@ -87,8 +90,27 @@ body {
 }
 
 .scroll-area {
+  flex: 1;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
+}
+
+.scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.35);
+  border-radius: 9999px;
+}
+
+.scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.55);
 }
 
 .bubble {
@@ -192,5 +214,46 @@ body {
 @media (max-width: 767px) {
   .bubble {
     max-width: 92%;
+  }
+
+  .chat-shell {
+    grid-template-columns: 1fr !important;
+  }
+
+  .chat-panel {
+    max-height: calc(100vh - 180px) !important;
+    border-radius: 1.25rem !important;
+    padding: 0.75rem !important;
+  }
+
+  .hero-panel {
+    border-radius: 1.25rem !important;
+    padding: 1rem !important;
+  }
+
+  .hero-panel h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-panel p {
+    font-size: 0.8125rem !important;
+  }
+
+  .side-panel {
+    border-radius: 1.25rem !important;
+  }
+
+  form input {
+    font-size: 0.8125rem !important;
+    padding: 0.65rem 0.85rem !important;
+  }
+
+  form button {
+    padding: 0.65rem 1rem !important;
+    font-size: 0.8125rem !important;
+  }
+
+  main {
+    padding: 0.75rem !important;
   }
 }
